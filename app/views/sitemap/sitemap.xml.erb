@@ -40,7 +40,7 @@
   <% @ceramiques.each do |ceramique| %>
     <url>
       <loc>https://<%=ENV['APPNAME']%>.herokuapp.com/<%=ENV['MODEL']%>/<%= ceramique.name.downcase.gsub(' ','-')%></loc>
-      <lastmod><%= ceramique.updated_at.strftime("%Y-%d-%m") %></lastmod>
+      <lastmod><%= ceramique.updated_at.strftime("%Y-%m-%d") %></lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
     </url>
