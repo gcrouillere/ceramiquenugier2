@@ -7,7 +7,7 @@
   <url>
     <loc>https://<%=ENV['APPNAME']%>.herokuapp.com</loc>
     <image:image>
-      <image:loc>https://<%=ENV['APPNAME']%>.herokuapp.com/assets/<%=ENV['HOMEPIC']%></image:loc>
+      <image:loc>https://<%=ENV['APPNAME']%>.herokuapp.com/<%= image_path ENV['HOMEPIC']%></image:loc>
     </image:image>
     <lastmod>2018-31-01</lastmod>
     <changefreq>monthly</changefreq>
