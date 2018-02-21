@@ -7,6 +7,7 @@ class PaymentsController < ApplicationController
       redirect_to edit_user_registration_path
     else
       set_order
+      @payment_theme = @active_theme.name
     end
   end
 

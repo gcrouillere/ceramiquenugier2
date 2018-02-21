@@ -14,6 +14,19 @@ $(document).ready(function() {
         });
       }
     }
+    else if($('#ceramique-filters-content-darktheme').size() > 0) {
+      if($(document).scrollTop() + $('.navbar-laptop-darktheme').height() > $('.ceramique-list').offset().top)  {
+        $('#ceramique-filters-content-darktheme').css({
+          position: 'fixed',
+          top: 70,
+        });
+      } else {
+        $('#ceramique-filters-content-darktheme').css({
+          position: '',
+          top: '',
+        });
+      }
+    }
   }
 
     function changeButton() {
