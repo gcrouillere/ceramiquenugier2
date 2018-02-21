@@ -5,7 +5,7 @@
 .alert.alert-dismissible {
   position: fixed;
   width: 100%;
-  z-index: 3;
+  z-index: 5;
   top: 70px;
 }
 .navbar-mobile {
@@ -71,7 +71,7 @@
       display: flex;
       flex: 1 0 auto;
       margin-left: 15px;
-      height: 40px;
+      height: 30px;
     }
   }
 

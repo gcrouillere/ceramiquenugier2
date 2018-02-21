@@ -18,10 +18,10 @@
           <% end %>
         <% end %>
         <%= link_to ceramiques_path do %>
-          <span><i class="fa fa-bars"></i> Liste des <%=ENV['MODEL']%></span>
+          <span><i class="fa fa-bars"></i> Boutique</span>
         <% end %>
         <%= link_to info_path do %>
-          <span><i class="fa fa-female"></i> Bio</span>
+          <span><i class="fa fa-female"></i> Infos</span>
         <% end %>
         <%= link_to new_lesson_path do %>
           <span><i class="fa fa-calendar-o"></i> Réserver un stage</span>
@@ -45,10 +45,10 @@
     <div class="navbar-item">
       <div class="nav-bar-list">
         <%= link_to ceramiques_path do %>
-          <span><i class="fa fa-bars"></i> Liste des <%=ENV['MODEL']%></span>
+          <span><i class="fa fa-bars"></i> Boutique</span>
         <% end %>
         <%= link_to info_path do %>
-            <span><i class="fa fa-female"></i> Bio</span>
+            <span><i class="fa fa-female"></i> Infos</span>
         <% end %>
         <%= link_to new_lesson_path do %>
           <span><i class="fa fa-calendar-o"></i> Réserver un stage</span>
@@ -71,8 +71,11 @@
 
   <div class="navbar-item">
     <div class="list-mobile">
+      <%= link_to ceramiques_path do %>
+          <span><i class="fa fa-bars"></i> Shop</span>
+        <% end %>
       <%= link_to info_path do %>
-        <li><span><i class="fa fa-female"></i> Bio</span></li>
+        <li><span><i class="fa fa-female"></i> Infos</span></li>
       <% end %>
       <%= link_to new_lesson_path do %>
         <span><i class="fa fa-calendar-o"></i> Stage</span>
@@ -83,7 +86,7 @@
           <% if Order.where(id: session[:order]).present? %>
             <% if Order.where(id: session[:order]).first.state != "lost" %>
               <%= link_to order_path(Order.find(session[:order])) do %>
-                <span><i class="fa fa-shopping-cart"></i> Panier</span>
+                <span><i class="fa fa-shopping-cart"></i></span>
               <% end %>
             <% end %>
           <% end %>
