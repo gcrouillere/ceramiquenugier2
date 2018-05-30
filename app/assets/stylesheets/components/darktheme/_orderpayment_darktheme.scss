@@ -36,13 +36,20 @@
 .pay-form-darktheme {
   .mobile-link-coord {
     text-align: center;
-    margin-top: 10px;
+    width: 90%;
+    color: white;
+    background: transparent;
+    border: 1px solid $primary;
+    border-radius: $project-border-radius;
+    padding: 6px 12px;
+    font-weight: 100;
+    margin: 10px auto;
   }
   .laptop-link-coord {
     width: 60%;
     color: white;
     background: transparent;
-    border-color: $primary;
+    border: 1px solid $primary;
     border-radius: $project-border-radius;
     padding: 6px 12px;
     font-weight: 100;

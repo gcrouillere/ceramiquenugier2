@@ -32,7 +32,7 @@
           <% if Order.where(id: session[:order]).present? %>
             <% if Order.where(id: session[:order]).first.state != "lost" %>
               <%= link_to order_path(Order.find(session[:order])) do %>
-                <span><i class="fa fa-shopping-cart"></i></span>
+                <span><%= image_tag "whitecart.svg", class: "lightcart"%></span>
               <% end %>
             <% end %>
           <% end %>
@@ -54,6 +54,15 @@
         <% end %>
         <%= link_to new_lesson_path do %>
           <span>Réserver un stage</span>
+        <% end %>
+        <% if session[:order].present? %>
+          <% if Order.where(id: session[:order]).present? %>
+            <% if Order.where(id: session[:order]).first.state != "lost" %>
+              <%= link_to order_path(Order.find(session[:order])) do %>
+                <span><%= image_tag "whitecart.svg", class: "lightcart"%></span>
+              <% end %>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -78,13 +87,11 @@
       <%= link_to new_lesson_path do %>
         <span>Stage</span>
       <% end %>
-      <% if user_signed_in? %>
-        <% if session[:order].present? %>
-          <% if Order.where(id: session[:order]).present? %>
-            <% if Order.where(id: session[:order]).first.state != "lost" %>
-              <%= link_to order_path(Order.find(session[:order])) do %>
-                <span><i class="fa fa-shopping-cart"></i></span>
-              <% end %>
+      <% if session[:order].present? %>
+        <% if Order.where(id: session[:order]).present? %>
+          <% if Order.where(id: session[:order]).first.state != "lost" %>
+            <%= link_to order_path(Order.find(session[:order])) do %>
+              <span><%= image_tag "whitecart.svg", class: "lightcart"%></span>
             <% end %>
           <% end %>
         <% end %>

@@ -42,17 +42,27 @@
             </table>
 
             <div class="total-lighttheme">
-              <h5>Frais de port: <%= humanized_money(@port) %> <%= currency_symbol %></h5>
-              <h3>Montant total: <%= humanized_money(@amount) %> <%= currency_symbol %></h3>
-              <form action="/orders/<%= @order.id%>/payments/new" method="get" class="hidden-xs">
+              <div class="cost-details">
+                <%= render 'shared/shipping_cost_bloc' %>
+                <h3 class="total_amount">Montant total: <%= humanized_money(@amount + @port) %> <%= currency_symbol %></h3>
+              </div>
+              <form action="/orders/<%= @order.id%>/payments/new" method="get" class="hidden-xs payment-form pay-form-lighttheme">
                 <input type="hidden" name="order_id" value="<%= @order.id%>">
-                <button type="submit" class="pull-right btn btn-primary lighttheme">
+                <div class="input-label-take-away">
+                  <input id="take_away-checkbox" type="checkbox" name="take_away">
+                  <label for="take_away-checkbox">Récupérer votre commande en magasin</label>
+                </div>
+                <button type="submit" class="btn btn-primary lighttheme">
                   FINALISER MA COMMANDE
                 </button>
               </form>
             </div>
-              <form action="/orders/<%= @order.id%>/payments/new" method="get" class="hidden-sm hidden-md hidden-lg text-center">
+              <form action="/orders/<%= @order.id%>/payments/new" method="get" class="hidden-sm hidden-md hidden-lg text-center payment-form pay-form-lighttheme-mobil">
                 <input type="hidden" name="order_id" value="<%= @order.id%>">
+                <div class="input-label-take-away">
+                  <input id="take_away-checkbox-mobile" type="checkbox" name="take_away">
+                  <label for="take_away-checkbox-mobile">Retirer la commande en magasin</label>
+                </div>
                 <button type="submit" class="btn btn-primary lighttheme">
                   FINALISER MA COMMANDE
                 </button>
@@ -64,3 +74,4 @@
 
 </div>
 
+<%= render 'shared/shipping_costs_display' %>

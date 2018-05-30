@@ -5,19 +5,30 @@
 
 .product-show {
   .ceramique-images {
-    .img-front-lighttheme {
-      border-radius: 1px;
-      width: 100%;
-    }
+      .img-front.horizontale {
+        border-radius: 1px;
+        width: 100%;
+      }
+      .img-front.verticale {
+        border-radius: 1px;
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        max-height: 75vh;
+        width: auto;
+        height: auto;
+      }
     .images {
       .thumbnail-lighttheme {
         border-radius: 1px;
         width: 15%;
-        height: 15%;
+        height: 80px;
         margin-right: 10px;
         transition: all ease 0.2s;
         box-shadow: none;
         margin: 10px !important;
+        cursor: pointer;
+        padding: 0px
       }
       .thumbnail-lighttheme:hover {
           transform: scale(1.01);
@@ -184,8 +195,7 @@
     align-items: center;
     .thumbnail {
       border-radius: 1px;
-      width: 15%;
-      height: 15%;
+      height: 50px;
       margin-right: 10px;
       margin: 10px !important;
       padding: 0px;

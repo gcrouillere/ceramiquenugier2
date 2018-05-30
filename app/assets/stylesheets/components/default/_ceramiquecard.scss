@@ -70,6 +70,7 @@
     justify-content: center;
     position: relative;
     margin: 10px;
+    height: 300px;
 
     .img {
       border-radius: $project-border-radius;
@@ -125,22 +126,7 @@
     -webkit-line-clamp: 3; /* number of lines to show */
     -webkit-box-orient: vertical;
   }
-  p.large {
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 15px;
-    text-align: justify;
-    color: $card-text;
-    font-weight: $font-weight-h5;
-    font-size: 16px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    line-height: 20px;     /* fallback */
-    max-height: 104px;      /* fallback */
-    -webkit-line-clamp: 5; /* number of lines to show */
-    -webkit-box-orient: vertical;
-  }
+
   .allpricesmobile-w {
     position: absolute;
     bottom: 11px;
@@ -213,4 +199,27 @@
 
 .ceramique-list {
   margin-bottom: 60px;
+}
+
+.no-ceramique-list {
+  margin-top: 200px;
+  .no-ceramique {
+    text-align: center;
+  }
+}
+
+.container-lighttheme {
+  .no-ceramique-list {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    .no-ceramique {
+      text-align: center;
+    }
+  }
+}
+
+@media all and (max-width: 800px) {
+  .no-ceramique-list {
+    margin-top: 50px;
+  }
 }
