@@ -7,9 +7,6 @@
 <% content_for(:meta_image) do %>
   <%= cl_image_path @ceramique.photos[0].path %>
 <% end %>
-<% content_for(:meta_description) do %>
-  <%= ("#{@ceramique.name} : #{@ceramique.description}. Prix: #{humanized_money(@ceramique.price)} €").squish %>
-<% end %>
 
 
 <div class="container">
@@ -21,20 +18,29 @@
       <div class="col-md-12">
         <div class="product-show text center">
 
-          <div class="col-md-6 product-show-half-top-wrapper">
-          <div class="ceramique-images">
-            <img class="img-front" id="zoom01" src="<%= cl_image_path @ceramique.photos[0].path %>" data-zoom-image="<%= cl_image_path @ceramique.photos[0].path %>" alt="<%=@ceramique.name%>">
-            <div class="images">
-              <% @ceramique.photos.each_with_index do |photo, index| %>
-                <% if index < 4 %>
-                  <img class="thumbnail" src="<%= cl_image_path @ceramique.photos[index].path %>" alt="<%=@ceramique.name%>">
-                <% end %>
+          <div class="product-show-half-top-wrapper-left">
+            <div class="ceramique-images">
+              <% verticale = false %>
+              <% classe = "" %>
+              <% @ceramique.photos.each do |photo| %>
+                <% photo.height > photo.width ? verticale = true : nil %>
               <% end %>
+              <% verticale ? classe = "verticale" : classe = "horizontale"  %>
+              <div class="front-image-div">
+                <%= render 'shared/product_image_overlay' %>
+                <img class="img-front <%= classe %> " id="zoom01" src="<%= cl_image_path @ceramique.photos[0].path, quality: "auto"%>" data-zoom-image="<%= cl_image_path @ceramique.photos[0].path, quality: "auto" %>" alt="<%=@ceramique.name%>">
+              </div>
+              <div class="images">
+                <% @ceramique.photos.each_with_index do |photo, index| %>
+                  <% if index < 4 %>
+                    <img class="thumbnail" src="<%= cl_image_path @ceramique.photos[index].path, quality: "auto" %>" alt="<%=@ceramique.name%>">
+                  <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
-          </div>
 
-          <div class="col-md-6 product-show-half-top-wrapper">
+          <div class="product-show-half-top-wrapper-right">
           <div class="info-add-basket">
             <div class="description">
               <h1> <%= @ceramique.name.capitalize%> </h1>
@@ -91,7 +97,7 @@
               <% end %>
                 <div class="col-sm-4 same-category-product-card">
                   <%= link_to ceramique_path(ceramique) , title: "#{ceramique.name}", class: "same-category-product-card-link"  do %>
-                  <img class="same-product-photo" src="<%= cl_image_path ceramique.photos[0].path %>" alt="<%=ceramique.name%>">
+                  <img class="same-product-photo" src="<%= cl_image_path ceramique.photos[0].path, quality: "auto" %>" alt="<%=ceramique.name%>">
                   <div class="same-category-product-card-text">
                     <p class="ceramique-name"><%= ceramique.name.capitalize%></p>
                     <% ceramique.offer ? discount =  ceramique.offer.discount : discount = 0 %>
@@ -125,14 +131,14 @@
           <%= facebook_share_id("facebooksharemobile") %>
           <h1> <%= @ceramique.name.capitalize%> </h1>
           <div class="image-xs-sm">
-            <img class="img-front" src="<%= cl_image_path @ceramique.photos[0].path %>" alt="<%=@ceramique.name%>">
+            <img class="img-front" src="<%= cl_image_path @ceramique.photos[0].path, quality: "auto" %>" alt="<%=@ceramique.name%>">
           </div>
         </div>
         <div class="other-imgs other-mobile">
           <div class="images-mobile">
             <% @ceramique.photos.each_with_index do |photo, index| %>
               <% if index < 4 %>
-                <img class="thumbnail" src="<%= cl_image_path @ceramique.photos[index].path %>" alt="<%=@ceramique.name%>">
+                <img class="thumbnail" src="<%= cl_image_path @ceramique.photos[index].path, quality: "auto" %>" alt="<%=@ceramique.name%>">
               <% end %>
             <% end %>
           </div>

@@ -24,7 +24,6 @@
     }
     h1 {
       text-shadow: 1px 1px 0px $home-text-shadow;
-      margin-right: 30px;
       letter-spacing: 6px;
     }
     p {
@@ -52,7 +51,6 @@
       }
       h1 {
         text-shadow: 1px 1px 0px $home-text-shadow;
-        margin-right: 30px;
       }
     }
 }
@@ -60,6 +58,7 @@
 .home-text {
   background: linear-gradient(135deg, #979EA1, #454749);
   padding: 10px;
+  margin-bottom: -20px;
   .text {
     display: flex;
     h1:first-child, h2:first-child {

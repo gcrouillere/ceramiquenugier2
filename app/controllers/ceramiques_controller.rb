@@ -2,7 +2,7 @@ class CeramiquesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @dev_redirection = "https://www.creermonecommerce.fr"
+    @dev_redirection = "https://www.creermonecommerce.fr/product_claim_details"
     @ceramiques = Ceramique.all
     Offer.where(showcased: true).first ? (Offer.where(showcased: true).first.ceramiques.present? ? @front_offer = Offer.all.where(showcased: true).first : nil) : nil
     @front_offer ? @ceramiques_to_display_in_offer = Ceramique.all.where(offer: @front_offer) : nil
@@ -22,9 +22,10 @@ class CeramiquesController < ApplicationController
   end
 
   def show
+    session[:zoom_message] ? session[:zoom_message] += 1 : session[:zoom_message] = 0
     @dev_redirection = "https://www.creermonecommerce.fr/produits"
     clean_orders
-    @ceramique = Ceramique.friendly.find(params[:id])
+    @ceramique = Ceramique.find(params[:id])
     @same_category_products = @ceramique.category.ceramiques - [@ceramique]
     @twitter_url = request.original_url.to_query('url')
     render "show_#{@active_theme.name}"
@@ -34,13 +35,16 @@ class CeramiquesController < ApplicationController
 
   def clean_orders
     Order.all.each do |order|
-      if (Time.now - order.created_at)/60/60 > ENV['BASKETDURATION'].to_f && order.state == "pending" && order.lesson.blank?
+      if ((Time.now - order.created_at)/60/60 > ENV['BASKETDURATION'].to_f && order.state == "pending" && order.lesson.blank?) || ((Time.now - order.created_at)/60/60 > 24 && order.state == "payment page" && order.lesson.blank?)
         order.basketlines.each do |basketline|
           ceramique = basketline.ceramique
           ceramique.update(stock: ceramique.stock + basketline.quantity)
         end
+        if session[:order]
+          wip_local_order = Order.find(session[:order])
+          session[:order] = nil if order == wip_local_order
+        end
         order.update(state: "lost")
-        session[:order] = nil
       end
     end
   end

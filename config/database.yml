@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: ecommercebase_production
-  username: ecommercebase
+  database: ecommercebase_rails52_production
+  username: ecommercebase_rails52
   password: <%= ENV['ECOMMERCE_DATABASE_PASSWORD'] %>

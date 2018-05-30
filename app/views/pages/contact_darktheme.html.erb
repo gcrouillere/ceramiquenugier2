@@ -10,7 +10,7 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
  <div class="contact-coord">
   <div class="col-md-12 hidden-xs hidden-sm coord">
     <% if user_signed_in? && current_user.admin %>
-      <% article_typing("contact", "vertical", "markdown1", "live-text5", "input5") %>
+      <% article_typing("contact", "vertical", "markdown1", "live-text1", "input1") %>
       <% @markdown = @markdown1 %>
       <div class="live-text">
         <%= render 'shared/articletyping' %>

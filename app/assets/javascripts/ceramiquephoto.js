@@ -4,6 +4,7 @@ $(document).ready(function() {
   $('#zoom01').elevateZoom({
     zoomType: "inner",
     cursor: "crosshair",
+    scrollZoom : true
   });
 });
 
@@ -22,6 +23,7 @@ function toggleActiveThumbnail(event) {
   $('#zoom01').elevateZoom({
     zoomType: "inner",
     cursor: "crosshair",
+    scrollZoom : true
   });
 }
 
@@ -40,5 +42,6 @@ function toggleActiveThumbnailLighttheme(event) {
   $('#zoom01').elevateZoom({
     zoomType: "inner",
     cursor: "crosshair",
+    scrollZoom : true
   });
 }

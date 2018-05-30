@@ -32,7 +32,15 @@
 .pay-form-lighttheme {
   .mobile-link-coord {
     text-align: center;
-    margin-top: 10px;
+    width: 90%;
+    border-radius: 1px;
+    padding: 17px 17px;
+    color: black;
+    font-size: 14px;
+    border: 1px solid black;
+    background-color: white;
+    transition: 0.1s background-color linear, 0.1s color linear;
+    margin: 10px auto;
   }
 
   .laptop-link-coord {

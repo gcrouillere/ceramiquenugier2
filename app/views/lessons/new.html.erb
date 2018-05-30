@@ -8,9 +8,6 @@
   <%= render 'shared/stage_pic'%>
   <%= @stagepicpath %>
 <% end %>
-<% content_for(:meta_description) do %>
-  Réserver un stage de poterie avec Françoise Nugier. Stages de 2 à 5 jours. Payer les arrhes en ligne par CB.
-<% end %>
 
 <%= photo_update('lessonphoto', 80, '', '', 30, '.stagepic', "Mise à jour photo pour stages")%>
 
@@ -27,7 +24,7 @@
           <div class="form-group">
             <div class='input-group date' id='datetimepicker1'>
               <span class="input-group-addon">
-                <span class="fa fa-calendar-o"></span>
+                <i class="far fa-calendar-alt"></i>
               </span>
               <input type='text' class="form-control" name="lesson[start]" placeholder="Cliquez sur l'icône calendrier pour sélectionner une date"/>
             </div>
@@ -65,7 +62,7 @@
           <div class="form-group">
             <div class='input-group date' id='datetimepicker2'>
               <span class="input-group-addon">
-                <span class="fa fa-calendar-o"></span>
+                <i class="far fa-calendar-alt"></i>
               </span>
               <input type='text' class="form-control" name="lesson[start]" placeholder="JJ.MM.AAAA"/>
             </div>
@@ -92,7 +89,7 @@
 
 <% content_for(:after_js) do %>
   <script>
-    $(document).on('ready', function() {
+    $(document).ready(function() {
 
       var confirmed_course_js_format = <%= raw @confirmed_course_js_format%>
       var jsArray = <%= @first_possible_day.to_json.html_safe %>
